@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Toppers{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Toppers</h2>
+
+<div class="card mb-4" style="max-width: 350px;">
+    <div class="card-body">
+        <h6 class="card-subtitle text-muted mb-2">Overall Topper</h6>
+        {% if overall %}
+        <h4 class="card-title mb-0">{{ overall['name'] }} ({{ overall['roll_number'] }})</h4>
+        <p class="text-muted mb-0">Average: {{ overall['avg_marks'] | round(2) }}</p>
+        {% else %}
+        <p class="text-muted mb-0">No grades recorded yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+<h4 class="mb-3">Subject-wise Toppers</h4>
+{% if toppers %}
+<table class="table table-hover align-middle">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Topper</th>
+            <th>Roll Number</th>
+            <th>Marks</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for subject, topper in toppers.items() %}
+        <tr>
+            <td>{{ subject }}</td>
+            {% if topper %}
+            <td>{{ topper['name'] }}</td>
+            <td>{{ topper['roll_number'] }}</td>
+            <td>{{ topper['marks'] }}</td>
+            {% else %}
+            <td colspan="3" class="text-muted">No grades recorded yet.</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="text-muted">No subject data yet.</p>
+{% endif %}
+{% endblock %}
