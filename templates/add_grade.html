@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Add Grade{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Add Grade for {{ student['name'] }}</h2>
+
+<form method="post" style="max-width: 500px;">
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <select class="form-select" id="subject" name="subject" required>
+            <option value="" disabled selected>Choose a subject</option>
+            {% for subject in subjects %}
+            <option value="{{ subject }}">{{ subject }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="marks" class="form-label">Marks (0-100)</label>
+        <input type="number" step="0.01" min="0" max="100" class="form-control" id="marks" name="marks" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Grade</button>
+    <a href="{{ url_for('student_details', student_id=student['id']) }}" class="btn btn-outline-secondary">Cancel</a>
+</form>
+{% endblock %}
