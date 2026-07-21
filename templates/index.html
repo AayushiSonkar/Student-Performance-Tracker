@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Student Performance Tracker{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 fw-bold">Dashboard</h2>
+
+<div class="row g-4">
+    <!-- Total Students Card -->
+    <div class="col-md-3 col-sm-6">
+        <div class="card stat-card shadow-sm h-100">
+            <div class="card-body">
+                <i class="bi bi-people-fill stat-icon text-primary"></i>
+                <h6 class="text-muted mt-2">Total Students</h6>
+                <h2 class="fw-bold">{{ stats.total_students }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Subjects Card -->
+    <div class="col-md-3 col-sm-6">
+        <div class="card stat-card shadow-sm h-100">
+            <div class="card-body">
+                <i class="bi bi-journal-bookmark-fill stat-icon text-success"></i>
+                <h6 class="text-muted mt-2">Total Subjects</h6>
+                <h2 class="fw-bold">{{ stats.total_subjects }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overall Average Card -->
+    <div class="col-md-3 col-sm-6">
+        <div class="card stat-card shadow-sm h-100">
+            <div class="card-body">
+                <i class="bi bi-graph-up-arrow stat-icon text-warning"></i>
+                <h6 class="text-muted mt-2">Overall Average</h6>
+                <h2 class="fw-bold">{{ stats.overall_average }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Performer Card -->
+    <div class="col-md-3 col-sm-6">
+        <div class="card stat-card shadow-sm h-100">
+            <div class="card-body">
+                <i class="bi bi-trophy-fill stat-icon text-danger"></i>
+                <h6 class="text-muted mt-2">Top Performer</h6>
+                <h4 class="fw-bold">{{ stats.top_performer }}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5 d-flex gap-2 flex-wrap">
+    <a href="{{ url_for('add_student') }}" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i> Add Student</a>
+    <a href="{{ url_for('students') }}" class="btn btn-outline-primary"><i class="bi bi-list-ul"></i> View All Students</a>
+    <a href="{{ url_for('reports') }}" class="btn btn-outline-secondary"><i class="bi bi-bar-chart-fill"></i> View Reports</a>
+</div>
+{% endblock %}

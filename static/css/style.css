@@ -1,0 +1,28 @@
+/* style.css - custom styling on top of Bootstrap */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f9;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+}
+
+.stat-card {
+    border: none;
+    border-radius: 14px;
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-icon {
+    font-size: 2rem;
+}
+
+.card {
+    border-radius: 14px;
+}
